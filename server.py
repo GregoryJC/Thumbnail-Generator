@@ -56,7 +56,7 @@ def check_image_format(original_format:str):
 @app.route('/generate_thumbnail', methods=['POST'])
 def generate_thumbnail():
     '''generate the thumbnail of a JPEG/PNG/BMP/JPG file'''
-    strart_time = time()
+    start_time = time()
     result = copy(default_result)
     image_data_type = ''
     original_format = ''
@@ -157,7 +157,7 @@ def generate_thumbnail():
         
         # calculate time cost
         end_time = time()
-        time_cost = round(end_time - strart_time, 4)
+        time_cost = round(end_time - start_time, 4)
         time_cost_sec = int(time_cost)
         time_cost_ms = int((time_cost - time_cost_sec)*1000)
         app.logger.info(f"Time cost = {time_cost_sec}s{time_cost_ms}ms")
