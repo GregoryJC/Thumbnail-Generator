@@ -2,19 +2,43 @@ Author: Zhonghai (Gregory) Zhang
 Email: Zhonghai.Gregory.Zhang@hotmail.com
 
 1. How to run: 
+gunicorn server:app -k gevent --access-logfile=logs/thumbnail_generator.log --error-logfile=logs/server_gunicorn.log --timeout 120  -b :630 -w 3
+
+This app should be run in a multi-process way, but if you need to run a single process, enter command: 
 python3 server.py
 
+
 2. How to test: 
+	1) Requesting with an image file:
+		python3 test_image_file.py
 
-4. API URL: http://0.0.0.0:630/generate_thumbnail
+	2) Requesting with an image string:
+		python3 test_image_string.py
 
-5. Request type: POST
+	3) Requesting with an image url:
+		python3 test_image_url.py
 
-6. Headers:
+3. API URL: http://0.0.0.0:630/generate_thumbnail
+
+4. Request type: POST
+
+5. Headers:
+{
+	'Content-type': 'application/json', 
+	'Accept': 'text/plain'
+}
 
 7. Request example:
+{
+	'image_data': '/9j/4AAQS......QhSh//Z'
+}
 
 8. Response example:
+{
+    'code': 1,
+    'message': 'SUCCESS',
+    'image_data': '/9j/4AAQS......QhSh//Z'
+}
 
 
 What API endpoints are available and how to use them - It should be easy to run and use the service. Please provide example images, curl requests, etc.
