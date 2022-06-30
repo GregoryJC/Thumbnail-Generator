@@ -4,7 +4,9 @@ cd /thumbnail_generator
 pip3 install --upgrade pip
 pip3 install -r requirements.txt
 mkdir -p ./logs
+mkdir -p ./finished
 chmod 777 ./logs
+chmod 777 ./finished
 touch ./logs/run.log
 touch ./logs/server_gunicorn.log
 touch ./logs/thumbnail_generator.log

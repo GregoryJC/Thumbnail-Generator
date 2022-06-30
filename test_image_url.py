@@ -12,6 +12,14 @@ headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 
 # test with image url
 image_url = 'https://thumbs.dreamstime.com/b/happy-dog-his-owner-young-man-embracing-labrador-retriever-back-yard-house-149780753.jpg'
+
+try:
+    image_downloaded = requests.get(image_url, stream=True)
+    image = Image.open(BytesIO(image_downloaded.content))
+    image.show()
+except:
+    pass
+
 payload = json.dumps({"image_url": image_url})
 
 try:
@@ -23,7 +31,10 @@ try:
         resized_image_data = base64.b64decode(image_data)
         buffer = BytesIO(resized_image_data)
         image = Image.open(buffer)
-        image.show()
+        try:
+            image.show()
+        except:
+            pass
     else:
         pprint(response_dict)
 except:

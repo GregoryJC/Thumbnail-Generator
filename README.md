@@ -2,13 +2,14 @@ Author: Zhonghai (Gregory) Zhang
 Email: Zhonghai.Gregory.Zhang@hotmail.com
 
 1. How to run: 
+in
 gunicorn server:app -k gevent --access-logfile=logs/thumbnail_generator.log --error-logfile=logs/server_gunicorn.log --timeout 120  -b :630 -w 3
 
 This app should be run in a multi-process way, but if you need to run a single process, enter command: 
 python3 server.py
 
 
-2. How to test: 
+1. How to test: 
 	1) Requesting with an image file:
 		python3 test_image_file.py
 

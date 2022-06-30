@@ -18,7 +18,10 @@ image_data = base64.b64encode(image_bytes).decode("utf-8")
 original_image_data = base64.b64decode(image_data)
 buffer = BytesIO(original_image_data)
 image = Image.open(buffer)
-image.show()
+try:
+    image.show()
+except:
+    pass
 payload = json.dumps({"image_data": image_data})
 
 try:
@@ -30,7 +33,10 @@ try:
         resized_image_data = base64.b64decode(image_data)
         buffer = BytesIO(resized_image_data)
         image = Image.open(buffer)
-        image.show()
+        try:
+            image.show()
+        except:
+            pass
     else:
         print('Image_data is empty. ')
 except:
